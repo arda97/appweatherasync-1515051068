@@ -62,7 +62,8 @@ export default class MainCuaca extends Component {
               sea_level: '-',
               grnd_level: '-',
               speed: '-'
-              }
+            },
+            loading: false
         });
     }
     });
