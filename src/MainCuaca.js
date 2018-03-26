@@ -32,8 +32,8 @@ export default class MainCuaca extends Component {
               main: responseJson.weather[0].main,
               description: responseJson.weather[0].description,
               temp: responseJson.main.temp,
-              sunrise: responseJson.sys.sunrise,
-              sunset: responseJson.sys.sunset,
+              sunrise: this.timestampToTime(responseJson.sys.sunrise),
+              sunset: this.timestampToTime(responseJson.sys.sunset),
               pressure: responseJson.main.pressure,
               humidity: responseJson.main.humidity,
               sea_level: responseJson.main.sea_level,
@@ -60,6 +60,17 @@ export default class MainCuaca extends Component {
         });
     }
     });
+  }
+
+  timestampToTime=(timestamp) => {
+    var date = new Date(timestamp*1000);
+    var hours = date.getHours();
+    var minutes = '0' + date.getMinutes();
+    var seconds = '0' + date.getSeconds();
+
+    var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+    return formattedTime;
   }
 
     renderRow(record) {
@@ -178,43 +189,14 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginRight: 20
   },
-  box1: {
-    flex: 0.7,
-    backgroundColor: 'blue',
-  },
-  box2: {
-    flex: 0.4,
-    backgroundColor: '#2196F3',
-    marginLeft: 10,
-    marginRight: 10,
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: 'center'
-  },
-  box3: {
-    flex: 0.5,
-    backgroundColor: '#90CAF9',
-    //marginTop: 10,
-    marginLeft: 10,
-    marginRight: 10,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    flexDirection: 'row'
-  },
   box4: {
     flex: 0.3,
-    backgroundColor: '#90CAF9',
-    //marginTop: 10,
+    backgroundColor: '#00D8C5',
     marginLeft: 10,
     marginRight: 10,
+    flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    flexDirection: 'row'
-  },
-  box5: {
-    flex: 0.7,
-    backgroundColor: '#1565C0',
-    margin: 10
   },
   button: {
     width: 140,
