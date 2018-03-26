@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { AppRegistry, TextInput, View, Text, StyleSheet, Button, Alert } from 'react-native';
+import Loader from './Loader';
 
 export default class MainCuaca extends Component {
   constructor(props) {
     super(props);
     this.state = {
       city: '',
+      loading: false,
       forecast: {
         main: '-',
         description: '-',
@@ -22,6 +24,9 @@ export default class MainCuaca extends Component {
   }
 
   getWeather=() => {
+    this.setState({
+      loading: true
+    });
   const url = 'http://api.openweathermap.org/data/2.5/weather?q=' + this.state.city + '&appid=fc8c704c9223ca9d5dd77f343bb18ebb&units=metric';
   fetch(url)
   .then((response) => response.json())
@@ -39,7 +44,8 @@ export default class MainCuaca extends Component {
               sea_level: responseJson.main.sea_level,
               grnd_level: responseJson.main.grnd_level,
               speed: responseJson.wind.speed
-              }
+            },
+            loading: false
         });
     } else {
       const warning = 'Maaf API Kota ' + this.state.city + ' Tidak Tersedia';
@@ -73,19 +79,12 @@ export default class MainCuaca extends Component {
     return formattedTime;
   }
 
-    renderRow(record) {
-      return (
-        <View style={styles.row}>
-          <View style={styles.info}>
-            <Text style={styles.items}>{record.name} </Text>
-          </View>
-        </View>
-        );
-    }
-
   render() {
     return (
         <View style={styles.container}>
+        <Loader
+          loading={this.state.loading}
+        />
         <Text style={styles.title}>Masukkan Nama Kota Dibawah</Text>
           <TextInput
             onChangeText={(city) => this.setState({ city })}
@@ -97,7 +96,7 @@ export default class MainCuaca extends Component {
           />
 
           <View>
-          <View style={styles.box4}>
+          <View style={styles.boxUp}>
           <View style={styles.button}>
           <View style={styles.iconContainer}>
             <Text> T </Text>
@@ -105,7 +104,7 @@ export default class MainCuaca extends Component {
             <Text> Temp : { this.state.forecast.temp} </Text>
           </View>
         </View>
-        <View style={styles.box4}>
+        <View style={styles.boxUp}>
           <View style={styles.button}>
           <View style={styles.iconContainer}>
             <Text> T </Text>
@@ -119,7 +118,7 @@ export default class MainCuaca extends Component {
             <Text> Main Desc : { this.state.forecast.description} </Text>
           </View>
         </View>
-        <View style={styles.box4}>
+        <View style={styles.boxUp}>
           <View style={styles.button}>
           <View style={styles.iconContainer}>
             <Text> T </Text>
@@ -133,7 +132,7 @@ export default class MainCuaca extends Component {
             <Text> Sunset : { this.state.forecast.sunset} </Text>
           </View>
         </View>
-        <View style={styles.box4}>
+        <View style={styles.boxUp}>
           <View style={styles.button}>
           <View style={styles.iconContainer}>
             <Text> T </Text>
@@ -147,7 +146,7 @@ export default class MainCuaca extends Component {
             <Text> Humidity : { this.state.forecast.humidity} </Text>
           </View>
         </View>
-        <View style={styles.box4}>
+        <View style={styles.boxUp}>
           <View style={styles.button}>
           <View style={styles.iconContainer}>
             <Text> T </Text>
@@ -161,7 +160,7 @@ export default class MainCuaca extends Component {
             <Text> Ground Level : { this.state.forecast.grnd_level} </Text>
           </View>
         </View>
-        <View style={styles.box4}>
+        <View style={styles.boxUp}>
           <View style={styles.button}>
           <View style={styles.iconContainer}>
             <Text> T </Text>
@@ -189,7 +188,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginRight: 20
   },
-  box4: {
+  boxUp: {
     flex: 0.3,
     backgroundColor: '#00D8C5',
     marginLeft: 10,
