@@ -13,7 +13,7 @@ const Header = (props) => {
 
 const styles = {
   contHeader: {
-    backgroundColor: '#00BCD4',
+    backgroundColor: '#03A9F4',
     justifyContent: 'flex-start',
     padding: 10,
     height: 50

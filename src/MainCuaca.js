@@ -85,6 +85,7 @@ export default class MainCuaca extends Component {
         <Loader
           loading={this.state.loading}
         />
+        <View style={styles.headInput}>
         <Text style={styles.title}>Masukkan Nama Kota Dibawah</Text>
           <TextInput
             onChangeText={(city) => this.setState({ city })}
@@ -92,85 +93,86 @@ export default class MainCuaca extends Component {
           <Button
               onPress={() => this.getWeather()}
               title="Tampilkan Cuaca"
-              color="#0097A7"
+              color="#01579B"
           />
+        </View>
 
-          <View>
+          <View style={styles.result}>
           <View style={styles.boxUp}>
-          <View style={styles.button}>
-          <View style={styles.iconContainer}>
-            <Text> T </Text>
-         </View>
-            <Text> Temp : { this.state.forecast.temp} </Text>
-          </View>
-        </View>
-        <View style={styles.boxUp}>
-          <View style={styles.button}>
-          <View style={styles.iconContainer}>
-            <Text> T </Text>
-         </View>
-            <Text> Main : { this.state.forecast.main} </Text>
-          </View>
-          <View style={styles.button}>
-          <View style={styles.iconContainer}>
-            <Text> T </Text>
-         </View>
-            <Text> Main Desc : { this.state.forecast.description} </Text>
-          </View>
-        </View>
-        <View style={styles.boxUp}>
-          <View style={styles.button}>
-          <View style={styles.iconContainer}>
-            <Text> T </Text>
-         </View>
-            <Text> Sunrise : { this.state.forecast.sunrise} </Text>
-          </View>
-          <View style={styles.button}>
-          <View style={styles.iconContainer}>
-            <Text> T </Text>
-         </View>
-            <Text> Sunset : { this.state.forecast.sunset} </Text>
-          </View>
-        </View>
-        <View style={styles.boxUp}>
-          <View style={styles.button}>
-          <View style={styles.iconContainer}>
-            <Text> T </Text>
-         </View>
-            <Text> Pressure : { this.state.forecast.pressure} </Text>
-          </View>
-          <View style={styles.button}>
-          <View style={styles.iconContainer}>
-            <Text> T </Text>
-         </View>
-            <Text> Humidity : { this.state.forecast.humidity} </Text>
-          </View>
-        </View>
-        <View style={styles.boxUp}>
-          <View style={styles.button}>
-          <View style={styles.iconContainer}>
-            <Text> T </Text>
-         </View>
-            <Text> Sea Level : { this.state.forecast.sea_level} </Text>
-          </View>
-          <View style={styles.button}>
-          <View style={styles.iconContainer}>
-            <Text> T </Text>
-         </View>
-            <Text> Ground Level : { this.state.forecast.grnd_level} </Text>
-          </View>
-        </View>
-        <View style={styles.boxUp}>
-          <View style={styles.button}>
-          <View style={styles.iconContainer}>
-            <Text> T </Text>
-         </View>
-            <Text> Wind Speed : { this.state.forecast.speed} </Text>
-          </View>
+
+            <View style={styles.button}>
+            <View style={styles.iconUp}>
+              <Text> T </Text>
+           </View>
+              <Text> Wind Speed : { this.state.forecast.speed} </Text>
+            </View>
+
+
+        <View style={styles.button}>
+        <View style={styles.iconUp}>
+          <Text> T </Text>
+       </View>
+          <Text> Temp : { this.state.forecast.temp} </Text>
         </View>
       </View>
-
+      <View style={styles.boxUp}>
+        <View style={styles.button}>
+        <View style={styles.iconUp}>
+          <Text> T </Text>
+       </View>
+          <Text> Main : { this.state.forecast.main} </Text>
         </View>
+        <View style={styles.button}>
+        <View style={styles.iconUp}>
+          <Text> T </Text>
+       </View>
+          <Text> Main Desc : { this.state.forecast.description} </Text>
+        </View>
+      </View>
+      <View style={styles.boxUp}>
+        <View style={styles.button}>
+        <View style={styles.iconUp}>
+          <Text> T </Text>
+       </View>
+          <Text> Sunrise : { this.state.forecast.sunrise} </Text>
+        </View>
+        <View style={styles.button}>
+        <View style={styles.iconUp}>
+          <Text> T </Text>
+       </View>
+          <Text> Sunset : { this.state.forecast.sunset} </Text>
+        </View>
+      </View>
+      <View style={styles.boxUp}>
+        <View style={styles.button}>
+        <View style={styles.iconUp}>
+          <Text> T </Text>
+       </View>
+          <Text> Pressure : { this.state.forecast.pressure} </Text>
+        </View>
+        <View style={styles.button}>
+        <View style={styles.iconUp}>
+          <Text> T </Text>
+       </View>
+          <Text> Humidity : { this.state.forecast.humidity} </Text>
+        </View>
+      </View>
+      <View style={styles.boxUp}>
+        <View style={styles.button}>
+        <View style={styles.iconUp}>
+          <Text> T </Text>
+       </View>
+          <Text> Sea Level : { this.state.forecast.sea_level} </Text>
+        </View>
+        <View style={styles.button}>
+        <View style={styles.iconUp}>
+          <Text> T </Text>
+       </View>
+          <Text> Ground Level : { this.state.forecast.grnd_level} </Text>
+        </View>
+      </View>
+      </View>
+</View>
     );
   }
 }
@@ -184,36 +186,47 @@ const styles = StyleSheet.create({
   title: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20,
+    color: '#000',
     marginBottom: 20,
     marginRight: 20
   },
   boxUp: {
-    flex: 0.3,
-    backgroundColor: '#00D8C5',
+    flex: 0.4,
     marginLeft: 10,
     marginRight: 10,
+    marginBottom: 10,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
   },
   button: {
-    width: 140,
+    flex: 1,
+    marginRight: 10,
     height: 40,
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: 'white',
     flexDirection: 'row'
   },
-  iconContainer: {
+  iconUp: {
     alignItems: 'center',
     backgroundColor: '#feb401',
     borderColor: '#feaf12',
-    //borderRadius: 15,
     borderWidth: 1,
     justifyContent: 'center',
     height: 40,
     width: 30,
+  },
+  result: {
+    marginTop: 30,
+  },
+  headInput: {
+    backgroundColor: '#81D4FA',
+    paddingBottom: 20,
+    paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginTop: 20
   },
   icon: {
     tintColor: '#fff',

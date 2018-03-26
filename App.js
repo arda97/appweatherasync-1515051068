@@ -26,7 +26,7 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E0F7FA',
+    backgroundColor: '#E1F5FE',
   },
   welcome: {
     fontSize: 20,

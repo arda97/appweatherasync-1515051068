@@ -14,7 +14,7 @@ const Footer = (props) => {
 };
 const styles = {
     backFooter: {
-      backgroundColor: '#29B6F6',
+      backgroundColor: '#03A9F4',
       justifyContent: 'center',
       alignItems: 'center',
       padding: 10,
